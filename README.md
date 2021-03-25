@@ -67,18 +67,18 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 
 The playbook implements the following tasks:
 - Download pre-configured install-elk.yml file and transfer the file from the local folder to jumpbox using the following command: <scp -i "Virginakey.pem" install-elk.yml ec2-user@ec2-54-89-238-20.compute-1.amazonaws.com/home/ec2-user>
-- SSH into jumpbox and check docker status and start docker service using command: <sudo service docker status> <sudo service docker start>
-- navigate into root by using following command: <Sudo docker run -t -I cyberxsecurity/ansible bash>
-- Open a separate gitbash or cmd terminal and locate the container, followed by transferring the install-elk.yml file to the root. <sudo docker ps> <sudo docker cp install-elk.yml (containerid):/root>
+- SSH into jumpbox and check docker status and start docker service using command: '''sudo service docker status> <sudo service docker start'''
+- navigate into root by using following command: '''Sudo docker run -t -I cyberxsecurity/ansible bash'''
+- Open a separate gitbash or cmd terminal and locate the container, followed by transferring the install-elk.yml file to the root. '''sudo docker ps> <sudo docker cp install-elk.yml (containerid):/root'''
 - on the root window, navigate into the hosts file and add the [elk] header with IP: 10.10.2.63 underneath the webservers using following command: cd /etc/hosts 
 
-[Webservers] 
+'''[Webservers] 
 10.10.2.122
 10.10.2.90
 [elk]
-10.10.2.63
+10.10.2.63'''
 
--SSH into elk server, update and upgrade the unbuntu machine followed by installing <ansible-playbook install-elk.yaml --key-file Virginakey.pem>
+-SSH into elk server, update and upgrade the unbuntu machine followed by installing '''ansible-playbook install-elk.yaml --key-file Virginakey.pem'''
 
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
@@ -87,7 +87,7 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- [10.10.2.122, 10.10.2.90]
+- '''[10.10.2.122, 10.10.2.90]'''
 
 We have installed the following Beats on these machines:
 - Filebeat
