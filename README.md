@@ -62,7 +62,7 @@ A summary of the access policies in place can be found in the table below.
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible? Automating this practice saves time and it has been tested, therefore it will have no mistakes once the playbook has been deployed.
+- Automating this practice saves time and it has been tested, therefore it will have no mistakes once the playbook has been deployed.
 
 The playbook implements the following tasks:
 - Download pre-configured install-elk.yml file and transfer the file from the local folder to jumpbox using the following command: ````scp -i "Virginakey.pem" install-elk.yml ec2-user@ec2-54-89-238-20.compute-1.amazonaws.com/home/ec2-user```
@@ -91,8 +91,8 @@ This ELK server is configured to monitor the following machines:
 We have installed the following Beats on these machines:
 - Filebeat
 
-These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+This Beat allows us to collect the following information from each machine:
+- Filebeat is a ligghtweight shipper for forwarding and centralizing log data. It helps you keep the simple things simple by offering a lightweight way to forward and centralize logs and files. 
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
@@ -102,8 +102,8 @@ SSH into the control node and follow the steps below:
 - Update the filebeat.yml configuration file to include elk-server ip to the elasticsearch and kibana category in the configuration file.
 - Run the playbook, and navigate to elk-server to check that the installation worked as expected.
 
-- The filebeat-playbook.yml is the file that  Where do you copy it? It was written by a trusted website from a trusted source.
+- The filebeat-playbook.yml is the playbook file to install or deploy that needs to be copied to " /etc/ansible/hosts/" directory.
 - _Which file do you update to make Ansible run the playbook on a specific machine? -filebeat.yml which is the configuration file which will deploy into the elk-server. How do I specify which machine to install the ELK server on versus which to install Filebeat on? - you would edit the hosts file and create a new header called elkservers and add the private ip of the elkserver instance. Then configure the filebeat.yml file to add the private ip of the elk-server into two lines within the file. Lines 1106 and 1806 which are the hosts ips.  
-- _Which URL do you navigate to in order to check that the ELK server is running? - ```10.10.2.63:5601```
+- _Once Elk is deployed, please use the following URL to verify that it's working ```10.10.2.63:5601```
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+
