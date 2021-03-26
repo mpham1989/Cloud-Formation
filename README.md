@@ -75,15 +75,15 @@ The playbook implements the following tasks:
 - Open a separate gitbash or cmd terminal and locate the container, followed by transferring the install-elk.yml file to the root. 
 - ```sudo docker ps``` ```sudo docker cp install-elk.yml (containerid):/root```
 - on the root window, navigate into the hosts file and add the [elk] header with IP: ```10.10.2.63``` underneath the webservers using following command: 
--
 cd /etc/hosts 
 
 [Webservers] 
-10.10.2.122
-10.10.2.90
+```10.10.2.122```
+
+```10.10.2.90```
 
 [elk]
-10.10.2.63
+```10.10.2.63```
 
 -SSH into elk server, update and upgrade the unbuntu machine followed by installing
 
