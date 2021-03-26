@@ -69,21 +69,18 @@ The playbook implements the following tasks:
 - ```scp -i "Virginakey.pem" install-elk.yml ec2-user@ec2-54-89-238-20.compute-1.amazonaws.com/home/ec2-user```
 - SSH into jumpbox and check docker status and start docker service using command: 
 - ```sudo service docker status> <sudo service docker start```
+
+![Alt text](https://raw.githubusercontent.com/mpham1989/Cloud-Formation/main/images/docker%20status.png)
+
 - navigate into root by using following command: ```Sudo docker run -t -I cyberxsecurity/ansible bash```
 - Open a separate gitbash or cmd terminal and locate the container, followed by transferring the install-elk.yml file to the root. 
 - ```sudo docker ps``` ```sudo docker cp install-elk.yml (containerid):/root```
+![Alt text](https://raw.githubusercontent.com/mpham1989/Cloud-Formation/main/images/Copying%20key.png)
+
 - on the root window, navigate into the hosts file and add the [elk] header with IP: ```10.10.2.63``` underneath the webservers using following command: 
 cd /etc/hosts 
 
-[Webservers] 
-
-```10.10.2.122```
-
-```10.10.2.90```
-
-[elk]
-
-```10.10.2.63```
+![Alt text](https://raw.githubusercontent.com/mpham1989/Cloud-Formation/main/images/edit%20host%20file.png)
 
 -SSH into elk server, update and upgrade the unbuntu machine followed by installing
 
