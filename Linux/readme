@@ -1,36 +1,36 @@
--```ssh "key.pem" ec2-user@ec2-##-##-###-##.us-region.compute.amazonaws.com```
--```cscp -yi "key.pem" <Key.pem> ansible_config.yml ec2-user@ec2-##-##-###-##.us-region.compute.amazonaws.com:/home/ec2-user```
--```sudo chmod 400 <key.pem>```
--```sudo yum install docker -y```
--```sudo service start```
--```sudo service docker status```
--```sudo docker info```
--```ssh -i "Virginiakey.pem"```
--```sudo docker pull cyberxsecurity/ansible```
--```sudo docker images```
--```sudo docker run -t -i -p 80:80 webserver:v1```
--```sudo docker container list -a```
--```cd /etc/docker```
--```sudo nano daemon.json```
+ssh "key.pem" ec2-user@ec2-##-##-###-##.us-region.compute.amazonaws.com
+cscp -yi "key.pem" <Key.pem> ansible_config.yml ec2-user@ec2-##-##-###-##.us-region.compute.amazonaws.com:/home/ec2-user
+sudo chmod 400 <key.pem>
+sudo yum install docker -y
+sudo service start
+sudo service docker status
+sudo docker info
+ssh -i "Virginiakey.pem"
+sudo docker pull cyberxsecurity/ansible
+sudo docker images
+sudo docker run -t -i -p 80:80 webserver:v1
+sudo docker container list -a
+cd /etc/docker
+sudo nano daemon.json
 {
 ```"default-address-pools":
 [
 {"base":"10.10.0.0/16","size":24}
 ]
 }```
--```sudo service docker restart```
--```sudo docker run -ti cyberxsecurity/ansible bash```
--```sudo docker ps```
--```sudo docker cp Key.pem <container id>:/root```
--```sudo docker ansible_config.yml <container id>:/root```
--```sudo apt-get update```
--```sudo apt-get upgrade```
--```cd /etc/ansible```
--```nano hosts```
--```nano ansible.cfg```
--```ansible-playbook ansible_config.yml --keyfile <key.pem>```
--```ansible-playbook install-elk.yml --key-file <key.pem>```
--```sudo docker attach```
--```ansible -m ping all --key-file "~/Key.pem"```
--```scp -i "key.pem" <file> ec2-user@ec2-##-###-##-###.us-region.compute.amazonaws.com:/home/ec2-user```
+sudo service docker restart
+sudo docker run -ti cyberxsecurity/ansible bash
+sudo docker ps
+sudo docker cp Key.pem <container id>:/root
+sudo docker ansible_config.yml <container id>:/root
+sudo apt-get update
+sudo apt-get upgrade
+cd /etc/ansible
+nano hosts
+nano ansible.cfg
+ansible-playbook ansible_config.yml --keyfile <key.pem>
+ansible-playbook install-elk.yml --key-file <key.pem>
+sudo docker attach
+ansible -m ping all --key-file "~/Key.pem"
+scp -i "key.pem" <file> ec2-user@ec2-##-###-##-###.us-region.compute.amazonaws.com:/home/ec2-user
 
