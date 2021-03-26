@@ -78,11 +78,13 @@ The playbook implements the following tasks:
 cd /etc/hosts 
 
 [Webservers] 
+
 ```10.10.2.122```
 
 ```10.10.2.90```
 
 [elk]
+
 ```10.10.2.63```
 
 -SSH into elk server, update and upgrade the unbuntu machine followed by installing
