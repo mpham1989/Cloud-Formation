@@ -13,11 +13,11 @@ sudo docker container list -a
 cd /etc/docker
 sudo nano daemon.json
 {
-```"default-address-pools":
+"default-address-pools":
 [
 {"base":"10.10.0.0/16","size":24}
 ]
-}```
+}
 sudo service docker restart
 sudo docker run -ti cyberxsecurity/ansible bash
 sudo docker ps
