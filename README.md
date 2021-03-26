@@ -5,9 +5,7 @@ The files in this repository were used to configure the network depicted below.
 
 ![Alt text](https://raw.githubusercontent.com/mpham1989/Marty-Pham/main/Diagrams/Untitled%20Diagram.png)
 
-These files have been tested and used to generate a live ELK deployment on AWS. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the .yml file may be used to install only certain pieces of it, such as Filebeat.
-
-  - install-elk.yml
+These files have been tested and used to generate a live ELK deployment on AWS. They can be used to either recreate the entire deployment pictured above. 
 
 This document contains the following details:
 - Description of the Topology
