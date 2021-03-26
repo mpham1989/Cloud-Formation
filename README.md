@@ -178,7 +178,7 @@ Sudo docker ps
 
 Step 14: Copy the key to your ansible container
 Sudo docker cp <key> <container id>:/root
-![Alt text]( https://raw.githubusercontent.com/mpham1989/ELK-Stack-amd-Filebeat-Project/main/images/sudo%20docker%20ps.png)
+![Alt text](https://raw.githubusercontent.com/mpham1989/ELK-Stack-amd-Filebeat-Project/main/images/sudo%20docker%20ps.png)
  ![Alt text](https://raw.githubusercontent.com/mpham1989/Cloud-Formation/main/images/Copying%20key.png)
 Move to your second cmd and type “ls”. The key should be visible if copied correctly
 
@@ -189,31 +189,24 @@ Select the new VPC named VPC1
 Select the private subnet to install Ubuntu
 Make sure you are creating 2 instances
 
-
-
-From your ansible container ping the IP addresses of the Ubuntu machine
 From your ansible container, ssh into each machine 
 Ssh -i <keyname> ubuntu@<IPaddress>
 
-Configure ansible container:
+Step 16:Configure ansible container:
 Cd etc/ansible
 Ls and look for hosts and .cfg file
 First nano hosts file
 Uncomment webservers in hosts file
-
+![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/edit%20host%20file.png)
 Use private IP address of private machine
 Ansible will try connecting to this machine
 Now nano ansible.cfg file
 
 Uncomment remote_user and set value equal to “ubuntu” (without quotes)
 
-Attempt to ping all using the following
-ansible -m ping all -–key-file <key name>
-Should fail (our subnet is different from our targets)
-Should be green on success
-Create ansible_config.yaml using the following code for Ubuntu in the same path as your key
+Step 17: Create ansible_config.yaml using the following code for Ubuntu in the same path as your key
 
----
+```
   - name: Config Web VM with Docker
     hosts: webservers
     become: true
@@ -238,22 +231,53 @@ Create ansible_config.yaml using the following code for Ubuntu in the same path 
         name: dvwa
         image: cyberxsecurity/dvwa
         state: started
-        published_ports: 80:80
+        published_ports: 80:80```
 
-If ping is successful, install playbook:
+Step 18: install playbook
 ansible-playbook ansible_config.yaml --key-file=Key1.pem
-If ping still not working, try sshing into one of the ubuntu machines first, then exit then ping again (don’t know why this works lul)
 
+![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/deploying%20ansible%20playbook.png)
 
-Create a load balancer now
-Load balancer is under ec2
-Create application load balancer
-Give any name
-Make sure its internet facing
-IPv4 will be used
-Select our VPC1
-Select availability zones to be our Private and Public subents
-Connect to the dvwa instance website
-Connect via ec2 instance public address.
-172.17.0.2
-10.10.0.254
+Step 19: Download the install-elk.yml file
+
+Step 22: Move install-elk.yml to ansible docker via "sudo docker cp <file> <docker process>:/root"
+![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/Copying%20key.png)
+
+Step 23: In docker process (aka ansible), make sure to add (if not there) the following beneath "[webservers]" and the ip addresses in /etc/ansible/hosts:
+
+![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/edit%20host%20file.png)
+
+Step 24: Ensure that elkserver ubuntu instance has been updated and upgraded (sudo apt-get update/upgrade)
+
+Step 25: Ensure before running install-elk.yml that you have sshed into the ELK server
+
+Step 26: Ensure that inbound rules on your ELK server allow for ports 5044, 5061, and 9200 to be open.
+
+Step 27: Run ansible-playbook install-elk.yml --key-file=<your key>
+
+![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/installing%20elk.png)
+
+RDP into your windows RDP instance and paste the two private unbuntu ips on to chrome
+
+![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/DVWA1.png)
+![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/DVWA2.png)
+
+Step 28: Connect by copying the private ip address of your ELK server and paste it into your Windows
+
+![Alt text](https://raw.githubusercontent.com/mpham1989/Marty-Pham/main/images/Kibana.png)
+
+Step 29: Download and edit the filebeat.configuration.yml and rename it to filebeat.yml
+
+Step 30: Open the file in notepad ++ and change the host ip to match the elkserver ip on line 1106 and 1806; change the version to (7.6.1) and dpkg with kibana page and uncomment github
+
+Step 31: Add sudo in front of each command module and save it
+
+Step 32: Transfer the filebeat files to jumpbox and then to the ansible root
+
+Step 33: run the filebeat playbook command
+
+![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/Deploy%20filebeat.png)
+
+Step 34: Hit check data on the kibana page (elk-server) to confirm if it was received.
+
+![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/Filebeat.png)
