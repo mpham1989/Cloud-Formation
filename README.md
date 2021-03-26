@@ -40,6 +40,7 @@ The configuration details of each machine may be found below.
 | DVWA2          | Webserver   | 10.10.2.90 | Linux (ubuntu 20.04)|
 | ELK            | Event Logger| 10.10.2.63 | Linux (ubuntu 20.04)|
 | RDP            | Viewer      | 10.10.0.29 | Windows Server 2019 | 
+
 ### Access Policies            
 
 The machines on the internal network are not exposed to the public Internet. 
@@ -59,6 +60,7 @@ A summary of the access policies in place can be found in the table below.
 | DVWA2    | No                  | 10.10.0.20             |
 | ELK      | No                  | 10.10.0.20             |
 | RDP      | No                  | 10.10.0.20             |
+
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
@@ -71,7 +73,7 @@ The playbook implements the following tasks:
 - ```sudo service docker status> <sudo service docker start```
 - navigate into root by using following command: ```Sudo docker run -t -I cyberxsecurity/ansible bash```
 - Open a separate gitbash or cmd terminal and locate the container, followed by transferring the install-elk.yml file to the root. 
-- ```sudo docker ps> <sudo docker cp install-elk.yml (containerid):/root```
+- ```sudo docker ps``` ```sudo docker cp install-elk.yml (containerid):/root```
 - on the root window, navigate into the hosts file and add the [elk] header with IP: 10.10.2.63 underneath the webservers using following command: cd /etc/hosts 
 
 [Webservers] 
@@ -109,5 +111,6 @@ SSH into the control node and follow the steps below:
 - The filebeat-playbook.yml is the playbook file to install or deploy that needs to be copied to " /etc/ansible/hosts/" directory.
 - Which file do you update to make Ansible run the playbook on a specific machine? -filebeat.yml which is the configuration file which will deploy into the elk-server. How do I specify which machine to install the ELK server on versus which to install Filebeat on? - you would edit the hosts file and create a new header called elkservers and add the private ip of the elkserver instance. Then configure the filebeat.yml file to add the private ip of the elk-server into two lines within the file. Lines 1106 and 1806 which are the hosts ips.  
 - Once Elk is deployed, please use the following URL to verify that it's working ```10.10.2.63:5601```
+
 ![Alt text](https://raw.githubusercontent.com/mpham1989/Marty-Pham/main/images/Kibana.png)
 
