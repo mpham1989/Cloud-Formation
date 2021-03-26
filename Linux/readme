@@ -1,1 +1,5 @@
-All Documentation regarding linux scripts
+```sudo yum install docker -y```
+```sudo service start```
+```sudo service docker status```
+```sudo docker info```
+```ssh -i "Virginiakey.pem"```
