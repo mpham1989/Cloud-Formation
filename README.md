@@ -65,7 +65,7 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 - Automating this practice saves time and it has been tested, therefore it will have no mistakes once the playbook has been deployed.
 
 The playbook implements the following tasks:
-- Download pre-configured install-elk.yml file and transfer the file from the local folder to jumpbox using the following command: ````scp -i "Virginakey.pem" install-elk.yml ec2-user@ec2-54-89-238-20.compute-1.amazonaws.com/home/ec2-user```
+- Download pre-configured install-elk.yml file and transfer the file from the local folder to jumpbox using the following command: ```scp -i "Virginakey.pem" install-elk.yml ec2-user@ec2-54-89-238-20.compute-1.amazonaws.com/home/ec2-user```
 - SSH into jumpbox and check docker status and start docker service using command: ```sudo service docker status> <sudo service docker start```
 - navigate into root by using following command: ```Sudo docker run -t -I cyberxsecurity/ansible bash```
 - Open a separate gitbash or cmd terminal and locate the container, followed by transferring the install-elk.yml file to the root. ```sudo docker ps> <sudo docker cp install-elk.yml (containerid):/root```
