@@ -114,7 +114,7 @@ SSH into the control node and follow the steps below:
 
 - The filebeat-playbook.yml is the playbook file to install or deploy that needs to be copied to " /etc/ansible/hosts/" directory.
 - Which file do you update to make Ansible run the playbook on a specific machine? -filebeat.yml which is the configuration file which will deploy into the elk-server. How do I specify which machine to install the ELK server on versus which to install Filebeat on? - you would edit the hosts file and create a new header called elkservers and add the private ip of the elkserver instance. Then configure the filebeat.yml file to add the private ip of the elk-server into two lines within the file. Lines 1106 and 1806 which are the hosts ips.  
-- Once Elk is deployed, please use the following URL to verify that it's working ```10.10.2.63:5601```
-
+- Once filebeat is deployed, please use the following URL to verify that it's working ```10.10.2.63:5601```
+![Alt text](https://raw.githubusercontent.com/mpham1989/Cloud-Formation/main/images/Filebeat.png)
 
 
