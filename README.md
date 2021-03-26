@@ -231,7 +231,7 @@ Step 17: Create ansible_config.yml using the following code for Ubuntu in the sa
         name: dvwa
         image: cyberxsecurity/dvwa
         state: started
-        published_ports: 80:80``
+        published_ports: 80:80```
 
 Step 18: install playbook
 ansible-playbook ansible_config.yaml --key-file=Key1.pem
