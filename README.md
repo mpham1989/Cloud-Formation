@@ -73,7 +73,6 @@ The playbook implements the following tasks:
 - navigate into root by using following command: ```Sudo docker run -t -I cyberxsecurity/ansible bash```
 - Open a separate gitbash or cmd terminal and locate the container, followed by transferring the install-elk.yml file to the root. 
 - ```sudo docker ps``` ```sudo docker cp install-elk.yml (containerid):/root```
-![Alt text](https://raw.githubusercontent.com/mpham1989/Cloud-Formation/main/images/Copying%20key.png)
 
 - on the root window, navigate into the hosts file and add the [elk] header with IP: ```10.10.2.63``` underneath the webservers using following command: 
 cd /etc/hosts 
@@ -126,39 +125,61 @@ Bonus
 Step 1: Open Cloud formation
 
 Step 2: Use the cloud formation template to deploy your network
+
 Step 3: Create a Linux 2 ec2 instance in your public subnet. (This instance will be hosting the ansible container)
+
 Step 4: Copy the public to your instance
+
 scp -i "<key name>" <key name> ec2-user@ec2-##-###-###-##.us-region.compute.amazonaws.com:/home/ec2-user
+  
 ![Alt text](https://raw.githubusercontent.com/mpham1989/ELK-Stack-amd-Filebeat-Project/main/images/copying%20virigina%20key.png)
+
 Step 5: Connect to your ec2 instance using ssh
+
 ssh -i "<key name>" ec2-user@ec2-##-###-###-##.us-region.compute.amazonaws.com
+  
 Step 6: install docker
+
 Sudo yum install docker -y
+
 ![Alt text](https://raw.githubusercontent.com/mpham1989/ELK-Stack-amd-Filebeat-Project/main/images/isntall%20docker.png)
+
 Step 7: Create a daemon.json file in the /etc/docker path
+
 Sudo nano /etc/docker/daemon.json
+
 Copy the following to the file to the daemon file
+```
 {
  "default-address-pools":
  [
  {"base":"10.10.0.0/24","size":24}
  ]
 }
+```
 Step 8: Start the docker service
 Sudo service docker start
 Check the status of docker service
 Sudo service docker status
-  ![Alt text](https://raw.githubusercontent.com/mpham1989/Cloud-Formation/main/images/docker%20status.png)
+![Alt text](https://raw.githubusercontent.com/mpham1989/Cloud-Formation/main/images/docker%20status.png)
+ 
 Step 9: Pull the ansible image using the following command
+
 Step 10: Sudo docker pull cyberxsecurity/ansible
+
 Step 11: Run the ansible container
+
 Step 12: Sudo docker run -ti cyberxsecurity/ansible bash
+
 Step 13: Open a second cmd connection to your ec2 instance
+
 Run the following command to get your container ID
 Sudo docker ps
+
 Step 14: Copy the key to your ansible container
 Sudo docker cp <key> <container id>:/root
 ![Alt text]( https://raw.githubusercontent.com/mpham1989/ELK-Stack-amd-Filebeat-Project/main/images/sudo%20docker%20ps.png)
+ ![Alt text](https://raw.githubusercontent.com/mpham1989/Cloud-Formation/main/images/Copying%20key.png)
 Move to your second cmd and type “ls”. The key should be visible if copied correctly
 
 Step 15: Create DVWA ec2 instances
