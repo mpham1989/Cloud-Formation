@@ -5,9 +5,9 @@ The files in this repository were used to configure the network depicted below.
 
 ![Alt text](https://raw.githubusercontent.com/mpham1989/Marty-Pham/main/Diagrams/Untitled%20Diagram.png)
 
-These files have been tested and used to generate a live ELK deployment on AWS. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on AWS. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the .yml file may be used to install only certain pieces of it, such as Filebeat.
 
-  - _TODO: install-elk.yml
+  - install-elk.yml
 
 This document contains the following details:
 - Description of the Topology
@@ -32,7 +32,6 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 - Once deploying metricbeat it will collect the metrics and statistics from your systms and services from operating system, CPU, memory running on the server. 
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name           | Function    | IP Address | Operating System    |
 |----------      |----------   |------------|------------------   |
@@ -103,8 +102,7 @@ SSH into the control node and follow the steps below:
 - Update the filebeat.yml configuration file to include elk-server ip to the elasticsearch and kibana category in the configuration file.
 - Run the playbook, and navigate to elk-server to check that the installation worked as expected.
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? filebeat-playbook.yml Where do you copy it? It was written by a trusted website from a trusted source.
+- The filebeat-playbook.yml is the file that  Where do you copy it? It was written by a trusted website from a trusted source.
 - _Which file do you update to make Ansible run the playbook on a specific machine? -filebeat.yml which is the configuration file which will deploy into the elk-server. How do I specify which machine to install the ELK server on versus which to install Filebeat on? - you would edit the hosts file and create a new header called elkservers and add the private ip of the elkserver instance. Then configure the filebeat.yml file to add the private ip of the elk-server into two lines within the file. Lines 1106 and 1806 which are the hosts ips.  
 - _Which URL do you navigate to in order to check that the ELK server is running? - ```10.10.2.63:5601```
 
