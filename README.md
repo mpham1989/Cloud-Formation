@@ -45,7 +45,7 @@ The configuration details of each machine may be found below.
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the jumpbox machine and RDP can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- ```10.10.2.122, 10.10.2.90, 10.10.2.63```
+```10.10.2.122, 10.10.2.90, 10.10.2.63```
 
 Machines within the network can only be accessed by SSH.
 - The only machines that can access the ELK server is the jumpbox. ```10.10.0.20```
@@ -65,10 +65,13 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 - Automating this practice saves time and it has been tested, therefore it will have no mistakes once the playbook has been deployed.
 
 The playbook implements the following tasks:
-- Download pre-configured install-elk.yml file and transfer the file from the local folder to jumpbox using the following command: ```scp -i "Virginakey.pem" install-elk.yml ec2-user@ec2-54-89-238-20.compute-1.amazonaws.com/home/ec2-user```
-- SSH into jumpbox and check docker status and start docker service using command: ```sudo service docker status> <sudo service docker start```
+- Download pre-configured install-elk.yml file and transfer the file from the local folder to jumpbox using the following command: 
+- ```scp -i "Virginakey.pem" install-elk.yml ec2-user@ec2-54-89-238-20.compute-1.amazonaws.com/home/ec2-user```
+- SSH into jumpbox and check docker status and start docker service using command: 
+- ```sudo service docker status> <sudo service docker start```
 - navigate into root by using following command: ```Sudo docker run -t -I cyberxsecurity/ansible bash```
-- Open a separate gitbash or cmd terminal and locate the container, followed by transferring the install-elk.yml file to the root. ```sudo docker ps> <sudo docker cp install-elk.yml (containerid):/root```
+- Open a separate gitbash or cmd terminal and locate the container, followed by transferring the install-elk.yml file to the root. 
+- ```sudo docker ps> <sudo docker cp install-elk.yml (containerid):/root```
 - on the root window, navigate into the hosts file and add the [elk] header with IP: 10.10.2.63 underneath the webservers using following command: cd /etc/hosts 
 
 [Webservers] 
@@ -77,7 +80,8 @@ The playbook implements the following tasks:
 [elk]
 10.10.2.63
 
--SSH into elk server, update and upgrade the unbuntu machine followed by installing ```ansible-playbook install-elk.yaml --key-file Virginakey.pem```
+-SSH into elk server, update and upgrade the unbuntu machine followed by installing 
+```ansible-playbook install-elk.yaml --key-file Virginakey.pem```
 
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
@@ -86,7 +90,7 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- ```[10.10.2.122, 10.10.2.90]```
+ ```[10.10.2.122, 10.10.2.90]```
 
 We have installed the following Beats on these machines:
 - Filebeat
@@ -104,6 +108,7 @@ SSH into the control node and follow the steps below:
 
 - The filebeat-playbook.yml is the playbook file to install or deploy that needs to be copied to " /etc/ansible/hosts/" directory.
 - Which file do you update to make Ansible run the playbook on a specific machine? -filebeat.yml which is the configuration file which will deploy into the elk-server. How do I specify which machine to install the ELK server on versus which to install Filebeat on? - you would edit the hosts file and create a new header called elkservers and add the private ip of the elkserver instance. Then configure the filebeat.yml file to add the private ip of the elk-server into two lines within the file. Lines 1106 and 1806 which are the hosts ips.  
-- Once Elk is deployed, please use the following URL to verify that it's working ```10.10.2.63:5601```
-
+- Once Elk is deployed, please use the following URL to verify that it's working 
+- ```10.10.2.63:5601```
+![Alt text](https://raw.githubusercontent.com/mpham1989/Marty-Pham/main/images/Kibana.png)
 
