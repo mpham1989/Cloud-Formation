@@ -207,7 +207,7 @@ Uncomment remote_user and set value equal to “ubuntu” (without quotes)
 Step 17: Create ansible_config.yml using the following code for Ubuntu in the same path as your key
 
 
-   ```name: Config Web VM with Docker
+   name: Config Web VM with Docker
     hosts: webservers
     become: true
     tasks:
@@ -231,7 +231,7 @@ Step 17: Create ansible_config.yml using the following code for Ubuntu in the sa
         name: dvwa
         image: cyberxsecurity/dvwa
         state: started
-        published_ports: 80:80```
+        published_ports: 80:80
 
 Step 18: install playbook
 ansible-playbook ansible_config.yaml --key-file=Key1.pem
